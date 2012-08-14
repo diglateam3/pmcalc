@@ -1,0 +1,31 @@
+#include "hspmath.as"
+
+//screen 0,256,160,8
+screen 0,256,125,8
+
+title "‚¨¬Œ­‚¢ŒvZ‹@"
+gsel 0,2
+*main
+	cls 0
+	font "MS UI Gothic",12
+	mes "y1:ˆê‰ñ•ª‚Ì‚¨¬Œ­‚¢z"
+	input month,255
+	mes "y2:—~‚µ‚¢‚à‚Ì‚Ì‹àŠzz"
+	input buy,255
+	/*mes "y3:Œ»İ‚Ì‚¨¬Œ­‚¢z"
+	input now,255*/
+	objsize 255,22
+	button "ŒvZ‚·‚éI",*calcmoney
+	font "MS UI Gothic",16,1
+	mes str(int(round(rslt))) + "‰ñ•ª‚¨¬Œ­‚¢‚ğ’™‚ß‚ê‚ÎOK‚Å‚·"
+	font "MS UI Gothic",11
+	mes "¦“r’†‚Åg‚Á‚½ê‡‚È‚Ç‚É‚æ‚è•Ï‰»‚·‚éê‡‚ª‚ ‚è‚Ü‚·"
+	stop
+*calcmoney
+	//wari = double((double(month)-double(now)))
+	if month == 0 | buy == 0: dialog "‹àŠz‚ª0‰~A‚Ü‚½‚Í”šˆÈŠO‚Ì•¶š‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚·B\n‚à‚¤ˆê“x“ü—Í‚µ‚Ä‚â‚è’¼‚µ‚Ä‚­‚¾‚³‚¢B",1,"‚¨¬Œ­‚¢ŒvZ‹@" : goto *main
+	if month > buy: dialog "Šù‚Éw“ü‚Å‚«‚éA‚Ü‚½‚ÍŸ‚Ì‚¨¬Œ­‚¢‚Åw“ü‚Å‚«‚Ü‚·B",0,"‚¨¬Œ­‚¢ŒvZ‹@" : goto *main
+	
+	wari = double(double(month))
+	rslt = double(double(buy) / wari)
+	goto *main
