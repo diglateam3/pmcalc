@@ -3,28 +3,28 @@
 //screen 0,256,160,8
 screen 0,256,125,8
 
-title "‚¨¬Œ­‚¢ŒvZ‹@"
+title "ãŠå°é£ã„è¨ˆç®—æ©Ÿ"
 gsel 0,2
 *main
 	cls 0
 	font "MS UI Gothic",12
-	mes "y1:ˆê‰ñ•ª‚Ì‚¨¬Œ­‚¢z"
+	mes "ã€1:ä¸€å›åˆ†ã®ãŠå°é£ã„ã€‘"
 	input month,255
-	mes "y2:—~‚µ‚¢‚à‚Ì‚Ì‹àŠzz"
+	mes "ã€2:æ¬²ã—ã„ã‚‚ã®ã®é‡‘é¡ã€‘"
 	input buy,255
-	/*mes "y3:Œ»İ‚Ì‚¨¬Œ­‚¢z"
+	/*mes "ã€3:ç¾åœ¨ã®ãŠå°é£ã„ã€‘"
 	input now,255*/
 	objsize 255,22
-	button "ŒvZ‚·‚éI",*calcmoney
+	button "è¨ˆç®—ã™ã‚‹ï¼",*calcmoney
 	font "MS UI Gothic",16,1
-	mes str(int(round(rslt))) + "‰ñ•ª‚¨¬Œ­‚¢‚ğ’™‚ß‚ê‚ÎOK‚Å‚·"
+	mes str(int(round(rslt))) + "å›åˆ†ãŠå°é£ã„ã‚’è²¯ã‚ã‚Œã°OKã§ã™"
 	font "MS UI Gothic",11
-	mes "¦“r’†‚Åg‚Á‚½ê‡‚È‚Ç‚É‚æ‚è•Ï‰»‚·‚éê‡‚ª‚ ‚è‚Ü‚·"
+	mes "â€»é€”ä¸­ã§ä½¿ã£ãŸå ´åˆãªã©ã«ã‚ˆã‚Šå¤‰åŒ–ã™ã‚‹å ´åˆãŒã‚ã‚Šã¾ã™"
 	stop
 *calcmoney
 	//wari = double((double(month)-double(now)))
-	if month == 0 | buy == 0: dialog "‹àŠz‚ª0‰~A‚Ü‚½‚Í”šˆÈŠO‚Ì•¶š‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚·B\n‚à‚¤ˆê“x“ü—Í‚µ‚Ä‚â‚è’¼‚µ‚Ä‚­‚¾‚³‚¢B",1,"‚¨¬Œ­‚¢ŒvZ‹@" : goto *main
-	if month > buy: dialog "Šù‚Éw“ü‚Å‚«‚éA‚Ü‚½‚ÍŸ‚Ì‚¨¬Œ­‚¢‚Åw“ü‚Å‚«‚Ü‚·B",0,"‚¨¬Œ­‚¢ŒvZ‹@" : goto *main
+	if month == 0 | buy == 0: dialog "é‡‘é¡ãŒ0å††ã€ã¾ãŸã¯æ•°å­—ä»¥å¤–ã®æ–‡å­—ãŒå…¥åŠ›ã•ã‚Œã¦ã„ã¾ã™ã€‚\nã‚‚ã†ä¸€åº¦å…¥åŠ›ã—ã¦ã‚„ã‚Šç›´ã—ã¦ãã ã•ã„ã€‚",1,"ãŠå°é£ã„è¨ˆç®—æ©Ÿ" : goto *main
+	if month > buy: dialog "æ—¢ã«è³¼å…¥ã§ãã‚‹ã€ã¾ãŸã¯æ¬¡ã®ãŠå°é£ã„ã§è³¼å…¥ã§ãã¾ã™ã€‚",0,"ãŠå°é£ã„è¨ˆç®—æ©Ÿ" : goto *main
 	
 	wari = double(double(month))
 	rslt = double(double(buy) / wari)
