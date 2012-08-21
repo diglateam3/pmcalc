@@ -1,6 +1,5 @@
 #include "hspmath.as"
 
-//screen 0,256,160,8
 screen 0,256,125,8
 
 title "お小遣い計算機"
@@ -12,20 +11,20 @@ gsel 0,2
 	input month,255
 	mes "【2:欲しいものの金額】"
 	input buy,255
-	/*mes "【3:現在のお小遣い】"
-	input now,255*/
 	objsize 255,22
 	button "計算する！",*calcmoney
 	font "MS UI Gothic",16,1
-	mes str(int(round(rslt))) + "回分お小遣いを貯めればOKです"
+	mes str(int(round(rslt))) + "回分お小遣いを貯めればOKです" ;Ver 1.1で一部変更
 	font "MS UI Gothic",11
 	mes "※途中で使った場合などにより変化する場合があります"
 	stop
 *calcmoney
-	//wari = double((double(month)-double(now)))
 	if month == 0 | buy == 0: dialog "金額が0円、または数字以外の文字が入力されています。\nもう一度入力してやり直してください。",1,"お小遣い計算機" : goto *main
 	if month > buy: dialog "既に購入できる、または次のお小遣いで購入できます。",0,"お小遣い計算機" : goto *main
 	
 	wari = double(double(month))
 	rslt = double(double(buy) / wari)
+	roundrslt = int(round(rslt)) ;ここからVer 1.1で追加
+	check1 = month * roundrslt
+	if check1 < buy: roundrslt + 1 ;ここまでVer 1.1で追加された部分
 	goto *main
